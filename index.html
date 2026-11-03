@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Request For You 💗</title>
+
+<style>
+
+/* BASIC RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+        135deg,
+        #ffe0ec,
+        #ffc1d6,
+        #fff0f5
+    );
+    font-family: 'Trebuchet MS', sans-serif;
+    padding: 25px 15px;
+    overflow-x: hidden;
+}
+
+/* FLOATING HEARTS */
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 22px;
+    animation: float 7s linear forwards;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* MAIN CARD */
+.card {
+    background: rgba(255, 255, 255, 0.96);
+    width: 100%;
+    max-width: 420px;
+    padding: 35px 25px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(255, 90, 140, 0.2);
+    position: relative;
+    z-index: 2;
+    margin: auto;
+}
+
+/* EMOJI */
+.top-emoji {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+/* HEADING */
+h1 {
+    color: #e75480;
+    font-size: clamp(24px, 7vw, 30px);
+    margin-bottom: 18px;
+}
+
+/* PARAGRAPHS */
+p {
+    color: #76515f;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.highlight {
+    color: #e75480;
+    font-weight: bold;
+}
+
+/* PROMISE BOX */
+.promise {
+    background: #fff0f5;
+    padding: 16px 12px;
+    border-radius: 18px;
+    margin: 20px 0;
+    color: #d94f7b;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.8;
+}
+
+/* YES BUTTON */
+.yes {
+    background: linear-gradient(135deg, #ff6b9d, #ec4780);
+    color: white;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 12px;
+    max-width: 100%;
+    box-shadow: 0 6px 15px rgba(236, 71, 128, 0.3);
+    transition: 0.3s ease;
+}
+
+.yes:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 20px rgba(236, 71, 128, 0.4);
+}
+
+/* RESPONSE MESSAGE */
+#response {
+    color: #e75480;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.8;
+    overflow-wrap: break-word;
+}
+
+/* FOOTER */
+.footer {
+    color: #c47b95;
+    font-size: 12px;
+    margin-top: 25px;
+}
+
+/* SMALL MOBILE SCREENS */
+@media (max-width: 380px) {
+
+    .card {
+        padding: 25px 17px;
+        border-radius: 24px;
+    }
+
+    .top-emoji {
+        font-size: 48px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .promise {
+        font-size: 14px;
+    }
+
+    .yes {
+        font-size: 14px;
+        padding: 13px 20px;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+
+    .card {
+        max-width: 430px;
+        padding: 40px 30px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MAIN CONTENT -->
+<div class="card">
+
+    <div class="top-emoji" id="emoji">
+        🥺💗
+    </div>
+
+    <h1>Hey, My Love!</h1>
+
+    <p>
+        I have a tiny little request to make...
+        <br>
+        Please read this with love! Hehe. 💕
+    </p>
+
+    <div class="promise">
+        💌 A LITTLE PERMISSION REQUEST 💌
+    </div>
+
+    <p>
+        So baby, I have a plan for tomorrow
+        with <span class="highlight">Sritee and Amisha</span>. 🥰
+    </p>
+
+    <p>
+        Can I please go out with them
+        for a little while?
+    </p>
+
+    <div class="promise">
+        ⏰ JUST 1 HOUR & 3 MINUTES MAX!
+        <br>
+        PINKY PROMISE! 🤞🏻
+    </div>
+
+    <p>
+        I'll be back soon, and you'll still
+        have all my love and attention. 💗
+    </p>
+
+    <p>
+        Sooo... will you allow your girl
+        to have a little outing? 🥹
+    </p>
+
+    <button class="yes" id="yesButton" onclick="sayYes()">
+        YES, MY LOVE! 💗
+    </button>
+
+    <div id="response"></div>
+
+    <div class="footer">
+        Made with endless love, just for you. 💕
+    </div>
+
+</div>
+
+<script>
+
+// FLOATING HEARTS
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    const emojis = ["💗", "💕", "💖", "🌸", "💞"];
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+        emojis[Math.floor(Math.random() * emojis.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+
+}
+
+setInterval(createHeart, 600);
+
+
+// WHEN HE CLICKS YES
+function sayYes() {
+
+    document.getElementById("response").innerHTML =
+        "YAYYYYY!!! 😭💗<br>" +
+        "I LOVE YOU SO MUCHHH! 😚💋<br>" +
+        "Thank you for being the sweetest boyfriend ever! 🥹💕<br>" +
+        "Your girl will be back in 1 hour and 30 minutes MAX! 🤞🏻";
+
+    document.getElementById("yesButton").innerHTML =
+        "BEST BOYFRIEND EVER! 🥹💗";
+
+    document.getElementById("emoji").innerHTML =
+        "🥳💖";
+
+    for (let i = 0; i < 40; i++) {
+
+        setTimeout(createHeart, i * 100);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
